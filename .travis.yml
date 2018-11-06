@@ -5,5 +5,4 @@ install:
  - pip install coverage
  - pip install coverage-badge
 script:
- - python3 -m unittest 
  - make badge
