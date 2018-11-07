@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # this is a test comment
 import operator
+from colorama import Fore, Style
 
 
 operators = {
@@ -23,14 +24,26 @@ def calculate(myarg):
             arg1 = stack.pop()
             result = function(arg1, arg2)
             stack.append(result)
-        print(stack)
+        print(stack)    
     if len(stack) != 1:
         raise TypeError("Too many parameters")
     return stack.pop()
 
 def main():
     while True:
-        result = calculate(input("rpn calc> "))
+        usr_in = input("rpn calc> ")
+        print("Evaluating the expression", end=" ")
+        for token in usr_in.split():
+            try:
+                token = int(token)
+                if token < 0:
+                    print(Fore.RED + str(token) + Style.RESET_ALL, end=" ")
+                else:
+                    print(Fore.BLUE + str(token) + Style.RESET_ALL, end=" ")
+            except ValueError:
+                print(Fore.MAGENTA + token + Style.RESET_ALL, end=" ")
+        print("")
+        result = calculate(usr_in)
         print("Result: ", result)
 
 if __name__ == '__main__':
