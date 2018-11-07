@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # this is a test comment
 import operator
-from colorama import Fore, Style
+import colorama
 
 
 operators = {
